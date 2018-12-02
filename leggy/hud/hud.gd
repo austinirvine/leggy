@@ -12,10 +12,11 @@ func handle_timeout():
 
 	emit_signal("game_over")
 
-func start():
+func start(time):
 	# Make sure we haven't already started
 	assert($Timer.is_stopped())
 
+	$Timer.wait_time = time
 	$Timer.start()
 	set_process(true)
 
