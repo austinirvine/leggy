@@ -33,7 +33,7 @@ charOBJ = NodePath("../..")
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.369496, 1.62941, 0 )
 
 [node name="Leg" parent="." instance=ExtResource( 4 )]
-transform = Transform( -1.40471e-08, 0, 0.321359, 0, 0.321359, 0, -0.321359, 0, -1.40471e-08, 0.679209, -2.38986, 0 )
+transform = Transform( 0.079779, 0.0215479, 0.310552, 0.0532093, 0.314926, -0.0355205, -0.306718, 0.0602381, 0.0746143, 0.72, -1.9, 0 )
 
 [node name="AudioStreamPlayer3D_in" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource( 5 )

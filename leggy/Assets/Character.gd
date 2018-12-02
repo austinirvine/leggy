@@ -16,8 +16,6 @@ var cut_threshold = false
 # Audio
 onready var audio_player_in = get_node("AudioStreamPlayer3D_in")
 onready var audio_player_out = get_node("AudioStreamPlayer3D_out")
-#var saw_in = preload("res://SawIn_1.wav")
-#var saw_out = preload("res://SawOut_1.wav")
 
 # Operating System
 var op_sys
