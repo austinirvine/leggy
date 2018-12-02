@@ -22,6 +22,8 @@ config/icon="res://icon.png"
 [autoload]
 
 Global="*res://Global.gd"
+Clicker="*res://clicker.tscn"
+ambiance="res://ambiance.tscn"
 
 [input]
 
