@@ -1,16 +1,29 @@
 extends Control
 
+const GAME_SCENE = preload("res://Assets/game.tscn")
+const MENU_SCENE = preload("res://menu/menu.tscn")
+
 signal game_over
 var target_message = ""
 var current_message_position = 0
 
 func _ready():
 	$Timer.connect("timeout", self, "handle_timeout")
+	$TryAgain.connect("pressed", self, "handle_tryagain_pressed")
+	$Exit.connect("pressed", self, "handle_exit_pressed")
 
 func handle_timeout():
 	$TimeLabel.text = "00"
+	$TryAgain.show()
+	$Exit.show()
 
 	emit_signal("game_over")
+
+func handle_tryagain_pressed():
+	get_tree().change_scene_to(GAME_SCENE)
+
+func handle_exit_pressed():
+	get_tree().change_scene_to(MENU_SCENE)
 
 func start(time):
 	# Make sure we haven't already started
