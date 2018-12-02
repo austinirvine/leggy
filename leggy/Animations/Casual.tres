@@ -1,0 +1,69 @@
+[gd_resource type="Animation" format=2]
+
+[resource]
+
+resource_name = "Casual"
+length = 0.001
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Skeleton:bones/1/parent")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Skeleton:bones/1/rest")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Transform( -7.97815e-07, -0.591986, 0.805948, 1, -8.34789e-07, 2.98023e-07, 4.352e-07, 0.805948, 0.591986, 4.76837e-07, 2.94875e-13, -4.46853 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Skeleton:bones/1/pose")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Skeleton:bones/2/rest")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Transform( -1, 2.78011e-08, 5.40654e-07, 5.36052e-07, 0.190469, 0.981693, -7.56854e-08, 0.981693, -0.190469, -4.54747e-13, 0, -11.9232 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Skeleton:bones/2/pose")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 ) ]
+}
+
