@@ -5,12 +5,9 @@ var target_message = ""
 var current_message_position = 0
 
 func _ready():
-	set_process(false)
-
 	$Timer.connect("timeout", self, "handle_timeout")
 
 func handle_timeout():
-	set_process(false)
 	$TimeLabel.text = "00"
 
 	emit_signal("game_over")
@@ -23,8 +20,9 @@ func start():
 	set_process(true)
 
 func message(text : String):
-	$MessageLabel.text = ""
+	current_message_position = 0
 	target_message = text
+	$MessageLabel.text = ""
 	$Officer/AnimationPlayer.play("talk")
 
 func _process(delta):
