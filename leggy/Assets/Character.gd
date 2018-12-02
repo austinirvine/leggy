@@ -17,6 +17,10 @@ var cut_threshold = false
 onready var audio_player_in = get_node("AudioStreamPlayer3D_in")
 onready var audio_player_out = get_node("AudioStreamPlayer3D_out")
 
+# Blood Signal
+var blood_speed = 10
+signal _on_sawing(sawing)
+
 # Operating System
 var op_sys
 
@@ -35,10 +39,11 @@ func _ready():
 	pass # Replace with function body.
 
 func _swipe_signal(dir):
-	print(dir)
+	#print(dir)
+	pass
 
 func _saw_loc(point, dir):
-	print(dir)
+	#print(dir)
 	if (first_move == 0):
 		last_point = point
 		first_move = 1
@@ -59,13 +64,16 @@ func _make_cut(saw, zLoc):
 		cut_threshold = true
 		audio_player_out._set_playing(true)
 		audio_player_in._set_playing(false)
+		emit_signal("_on_sawing", false)
 		pass
 	elif cut_threshold == true && zLoc > 300:
 		cut_threshold = false
 		audio_player_out._set_playing(false)
 		audio_player_in._set_playing(true)
+		emit_signal("_on_sawing", true)
 		saw.translate( Vector3 ( 0.0, -0.15 / 2, 0.0 ))
 		progress += 1
+
 
 	#leg change to ragdoll
 	if (progress == 15 * 2) :
@@ -83,6 +91,7 @@ func _make_cut(saw, zLoc):
 	#print(progress)
 
 func _saw_pitch(delta) :
+	var blood = get_parent().get_node("Blood")
 	var pitch_value = audio_player_in.get_pitch_scale() * delta / 10
 	audio_player_in.set_pitch_scale(delta + audio_player_in.get_pitch_scale())
 	audio_player_out.set_pitch_scale(delta + audio_player_out.get_pitch_scale())
