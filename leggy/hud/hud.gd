@@ -12,7 +12,8 @@ func _ready():
 
 func handle_timeout():
 	set_process(false)
-	$Label.text = "00"
+	$TimeLabel.text = "00"
+
 	emit_signal("game_over")
 
 func start():
@@ -22,5 +23,8 @@ func start():
 	$Timer.start()
 	set_process(true)
 
+func message(text : String):
+	$MessageLabel.text = text
+
 func _process(delta):
-	$Label.text = ("%.0f" % [$Timer.time_left]).pad_zeros(2)
+	$TimeLabel.text = ("%.0f" % [$Timer.time_left]).pad_zeros(2)
