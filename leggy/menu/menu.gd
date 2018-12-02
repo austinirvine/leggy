@@ -7,4 +7,5 @@ func _ready():
 	$ExitButton.connect("pressed", get_tree(), "quit")
 
 func handle_startbutton_pressed():
+	Clicker.play()
 	get_tree().change_scene_to(GAME_SCENE)

@@ -6,6 +6,7 @@ const MENU_SCENE = preload("res://menu/menu.tscn")
 signal game_over
 var target_message = ""
 var current_message_position = 0
+var finish_time = 0.0
 
 func _ready():
 	$Timer.connect("timeout", self, "handle_timeout")
@@ -34,6 +35,7 @@ func start(time):
 	set_process(true)
 
 func stop():
+	finish_time = $Timer.time_left
 	$Timer.stop()
 	
 	$TryAgain.text = "Again!"
@@ -48,7 +50,10 @@ func message(text : String):
 	$Officer/AnimationPlayer.play("talk")
 
 func _process(delta):
-	$TimeLabel.text = ("%.0f" % [$Timer.time_left]).pad_zeros(2)
+	if finish_time != 0.0:
+		$TimeLabel.text = ("%.0f" % [finish_time]).pad_zeros(2)
+	else:
+		$TimeLabel.text = ("%.0f" % [$Timer.time_left]).pad_zeros(2)
 
 	if current_message_position < target_message.length():
 		$MessageLabel.text += target_message[current_message_position]
