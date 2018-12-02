@@ -32,4 +32,5 @@ debug_mode = false
 
 [connection signal="swipe_ended" from="SwipeDir/SwipeDetector" to="SwipeDir" method="_on_SwipeDetector_swipe_ended"]
 [connection signal="swipe_updated" from="SwipeDir/SwipeDetector" to="SwipeDir" method="_on_SwipeDetector_swipe_updated"]
+[connection signal="swipe_updated_with_delta" from="SwipeDir/SwipeDetector" to="SwipeDir" method="_on_SwipeDetector_swipe_updated_with_delta"]
 [connection signal="swiped" from="SwipeDir/SwipeDetector" to="SwipeDir" method="_on_SwipeDetector_swiped"]

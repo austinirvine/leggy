@@ -1,11 +1,10 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=13 format=2]
 
-[ext_resource path="res://Assets/Thigh.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Assets/calf-withrag.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Assets/imported/Material.material" type="Material" id=3]
-[ext_resource path="res://Assets/imported/nail.material" type="Material" id=4]
-[ext_resource path="res://Assets/imported/blood.material" type="Material" id=5]
-[ext_resource path="res://Assets/imported/bone.material" type="Material" id=6]
+[ext_resource path="res://Assets/RagdollIt.gd" type="Script" id=1]
+[ext_resource path="res://Assets/imported/Material.material" type="Material" id=2]
+[ext_resource path="res://Assets/imported/nail.material" type="Material" id=3]
+[ext_resource path="res://Assets/imported/blood.material" type="Material" id=4]
+[ext_resource path="res://Assets/imported/bone.material" type="Material" id=5]
 
 [sub_resource type="ConcavePolygonShape" id=1]
 
@@ -23,7 +22,7 @@ surfaces/0 = {
 "blend_shape_data": [  ],
 "format": 97731,
 "index_count": 5604,
-"material": ExtResource( 3 ),
+"material": ExtResource( 2 ),
 "name": "Material",
 "primitive": 4,
 "skeleton_aabb": [  ],
@@ -36,7 +35,7 @@ surfaces/1 = {
 "blend_shape_data": [  ],
 "format": 97731,
 "index_count": 120,
-"material": ExtResource( 4 ),
+"material": ExtResource( 3 ),
 "name": "nail",
 "primitive": 4,
 "skeleton_aabb": [  ],
@@ -49,7 +48,7 @@ surfaces/2 = {
 "blend_shape_data": [  ],
 "format": 97731,
 "index_count": 42,
-"material": ExtResource( 5 ),
+"material": ExtResource( 4 ),
 "name": "blood",
 "primitive": 4,
 "skeleton_aabb": [  ],
@@ -67,14 +66,32 @@ surfaces/0 = {
 "blend_shape_data": [  ],
 "format": 97539,
 "index_count": 288,
-"material": ExtResource( 6 ),
+"material": ExtResource( 5 ),
 "name": "bone",
 "primitive": 4,
 "skeleton_aabb": [  ],
 "vertex_count": 50
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="CapsuleShape" id=4]
+
+margin = 0.04
+radius = 1.86721
+height = 1.39895
+
+[sub_resource type="CapsuleShape" id=5]
+
+margin = 0.04
+radius = 1.03401
+height = 9.24367
+
+[sub_resource type="CapsuleShape" id=6]
+
+margin = 0.04
+radius = 0.708817
+height = 4.23922
+
+[sub_resource type="Animation" id=7]
 
 length = 10.375
 loop = false
@@ -108,37 +125,42 @@ tracks/3/imported = true
 tracks/3/enabled = true
 tracks/3/keys = PoolRealArray( 0, 1, -2.38419e-07, 9.53674e-07, 2.38419e-07, -0.323627, -0.00415101, -0.106706, 0.94014, 1, 1, 1, 10.375, 1, -2.38419e-07, 9.53674e-07, 2.38419e-07, -0.323627, -0.00415101, -0.106706, 0.94014, 1, 1, 1 )
 
-[node name="Leg" type="Spatial"]
-
-[node name="Thigh" parent="." instance=ExtResource( 1 )]
-transform = Transform( 0.949199, 0.13184, 0.285727, 0.206254, 0.425097, -0.881335, -0.237657, 0.895495, 0.376309, 0.139239, 8.91417, 1.27925 )
-
-[node name="calf-withrag" parent="." instance=ExtResource( 2 )]
-pause_mode = 1
-transform = Transform( 0.964693, 0.114771, 0.237051, 0.169162, 0.41985, -0.891689, -0.201866, 0.900307, 0.385612, -0.986283, 4.78245, -7.3733 )
-visible = false
-
-[node name="calf-norag" type="StaticBody" parent="."]
-editor/display_folded = true
-transform = Transform( 0.964693, 0.114771, 0.237051, 0.169162, 0.41985, -0.891689, -0.201866, 0.900307, 0.385612, -0.986283, 4.78245, -7.3733 )
+[node name="calf-withrag" type="RigidBody"]
 input_ray_pickable = true
 input_capture_on_drag = false
 collision_layer = 1
 collision_mask = 1
-constant_linear_velocity = Vector3( 0, 0, 0 )
-constant_angular_velocity = Vector3( 0, 0, 0 )
+mode = 0
+mass = 1.0
+gravity_scale = 1.0
+custom_integrator = false
+continuous_cd = false
+contacts_reported = 0
+contact_monitor = false
+sleeping = false
+can_sleep = false
+axis_lock_linear_x = false
+axis_lock_linear_y = false
+axis_lock_linear_z = false
+axis_lock_angular_x = false
+axis_lock_angular_y = false
+axis_lock_angular_z = false
+linear_velocity = Vector3( 0, 0, 0 )
+linear_damp = -1.0
+angular_velocity = Vector3( 0, 0, 0 )
+angular_damp = -1.0
 
-[node name="CollisionShape" type="CollisionShape" parent="calf-norag"]
+[node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.69148, 7.32977, 1.00314e-06 )
 shape = SubResource( 1 )
 disabled = false
 
-[node name="Scene Root" type="Spatial" parent="calf-norag"]
+[node name="Scene Root" type="Spatial" parent="."]
 
-[node name="Armature" type="Spatial" parent="calf-norag/Scene Root"]
+[node name="Armature" type="Spatial" parent="Scene Root"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.69148, 7.32977, 1.00314e-06 )
 
-[node name="Skeleton" type="Skeleton" parent="calf-norag/Scene Root/Armature"]
+[node name="Skeleton" type="Skeleton" parent="Scene Root/Armature"]
 bones/0/name = "Bone"
 bones/0/parent = -1
 bones/0/rest = Transform( -0.921559, -4.69387e-07, 0.388239, 0.388239, -5.21541e-08, 0.921559, -3.68804e-07, 1, 1.63913e-07, 0.0433716, 0.477085, 6.52931e-08 )
@@ -154,8 +176,9 @@ bones/2/parent = 1
 bones/2/rest = Transform( -1, 2.78011e-08, 5.40654e-07, 5.36052e-07, 0.190469, 0.981693, -7.56854e-08, 0.981693, -0.190469, -4.54747e-13, 0, -11.9232 )
 bones/2/enabled = true
 bones/2/bound_children = [  ]
+script = ExtResource( 1 )
 
-[node name="BottomLeg" type="MeshInstance" parent="calf-norag/Scene Root/Armature/Skeleton"]
+[node name="BottomLeg" type="MeshInstance" parent="Scene Root/Armature/Skeleton"]
 layers = 1
 material_override = null
 cast_shadow = 1
@@ -171,7 +194,7 @@ material/0 = null
 material/1 = null
 material/2 = null
 
-[node name="BottomLegBone" type="MeshInstance" parent="calf-norag/Scene Root/Armature/Skeleton/BottomLeg"]
+[node name="BottomLegBone" type="MeshInstance" parent="Scene Root/Armature/Skeleton/BottomLeg"]
 transform = Transform( -0.243511, -0.0636889, -0.552597, 0.200146, -0.667282, -0.0112907, -0.841301, 0.123393, 0.356512, -0.248422, -0.963456, 0.0852189 )
 layers = 1
 material_override = null
@@ -186,12 +209,91 @@ mesh = SubResource( 3 )
 skeleton = NodePath("..")
 material/0 = null
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="calf-norag/Scene Root"]
+[node name="Physical Bone Bone" type="PhysicalBone" parent="Scene Root/Armature/Skeleton"]
+transform = Transform( -0.921559, -4.69387e-07, 0.388239, 0.388239, -5.21541e-08, 0.921559, -3.68804e-07, 1, 1.63913e-07, -0.824055, -1.58192, -3.00931e-07 )
+input_ray_pickable = true
+input_capture_on_drag = false
+collision_layer = 1
+collision_mask = 1
+joint_type = 3
+joint_offset = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.51001e-13, 4.29172e-26, 2.23426 )
+body_offset = Transform( 1, 0, -6.75845e-14, -2.84217e-13, 1, 0, -8.49346e-14, -2.84217e-14, 1, 0, 0, -2.23426 )
+mass = 1.0
+weight = 9.8
+friction = 0.35
+bounce = 0.0
+gravity_scale = 1.0
+bone_name = "Bone"
+joint_constraints/angular_limit_enabled = true
+joint_constraints/angular_limit_upper = 25.2
+joint_constraints/angular_limit_lower = -46.8
+joint_constraints/angular_limit_bias = 0.3
+joint_constraints/angular_limit_softness = 0.9
+joint_constraints/angular_limit_relaxation = 1.0
+
+[node name="CollisionShape" type="CollisionShape" parent="Scene Root/Armature/Skeleton/Physical Bone Bone"]
+shape = SubResource( 4 )
+disabled = false
+
+[node name="Physical Bone Bone001" type="PhysicalBone" parent="Scene Root/Armature/Skeleton"]
+transform = Transform( 4.34808e-07, 0.85845, -0.512897, 3.91655e-08, 0.512897, 0.85845, 1, -4.84356e-07, 9.78201e-08, 1.3662, -8.75867, -1.25032e-06 )
+input_ray_pickable = true
+input_capture_on_drag = false
+collision_layer = 1
+collision_mask = 1
+joint_type = 3
+joint_offset = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.41017e-12, 4.76837e-07, 5.9616 )
+body_offset = Transform( 1, 5.68434e-13, -2.84217e-13, 0, 1, -3.84774e-14, 0, -9.17323e-14, 1, 2.84217e-13, -4.76837e-07, -5.9616 )
+mass = 1.0
+weight = 9.8
+friction = 0.3
+bounce = 0.0
+gravity_scale = 1.0
+bone_name = "Bone.001"
+joint_constraints/angular_limit_enabled = false
+joint_constraints/angular_limit_upper = 90.0
+joint_constraints/angular_limit_lower = -90.0
+joint_constraints/angular_limit_bias = 0.3
+joint_constraints/angular_limit_softness = 0.9
+joint_constraints/angular_limit_relaxation = 1.0
+
+[node name="CollisionShape" type="CollisionShape" parent="Scene Root/Armature/Skeleton/Physical Bone Bone001"]
+shape = SubResource( 5 )
+disabled = false
+
+[node name="Physical Bone Bone002" type="PhysicalBone" parent="Scene Root/Armature/Skeleton"]
+transform = Transform( 5.75526e-07, 0.797597, 0.603191, 2.536e-07, 0.603191, -0.797597, -1, 4.88181e-07, 3.774e-07, -5.39122, -21.0515, -1.39069e-06 )
+input_ray_pickable = true
+input_capture_on_drag = false
+collision_layer = 1
+collision_mask = 1
+joint_type = 3
+joint_offset = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.4519e-06, 12.1564, 0.197543 )
+body_offset = Transform( 1, -4.34386e-07, -3.93783e-07, -9.59899e-08, 0.296074, -0.955165, 5.0903e-07, 0.955165, 0.296074, -1.09352e-06, -3.41052, -11.6699 )
+mass = 1.0
+weight = 9.8
+friction = 0.3
+bounce = 0.0
+gravity_scale = 1.0
+bone_name = "Bone.002"
+joint_constraints/angular_limit_enabled = true
+joint_constraints/angular_limit_upper = 32.4
+joint_constraints/angular_limit_lower = -25.2
+joint_constraints/angular_limit_bias = 0.12
+joint_constraints/angular_limit_softness = 10.17
+joint_constraints/angular_limit_relaxation = 1.0
+
+[node name="CollisionShape" type="CollisionShape" parent="Scene Root/Armature/Skeleton/Physical Bone Bone002"]
+transform = Transform( 1, -6.29827e-07, 2.23173e-07, -2.26932e-07, 0.413674, 0.910425, -6.42134e-07, -0.910425, 0.413674, 4.37286e-06, 9.31253, -0.459288 )
+shape = SubResource( 6 )
+disabled = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Scene Root"]
 root_node = NodePath("..")
 autoplay = ""
 playback_process_mode = 1
 playback_default_blend_time = 0.0
 playback_speed = 1.0
-anims/default = SubResource( 4 )
+anims/default = SubResource( 7 )
 blend_times = [  ]
 

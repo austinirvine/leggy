@@ -16,7 +16,7 @@ extents = Vector3( 1, 0.0625992, 1 )
 [node name="Background" type="Spatial"]
 
 [node name="Ground" type="StaticBody" parent="."]
-transform = Transform( 4, 0, 0, 0, 1, 0, 0, 0, 4, 0, -2, 0 )
+transform = Transform( 6.86658, 0, 0, 0, 1, 0, 0, 0, 8.77252, 0, -2, 0 )
 input_ray_pickable = true
 input_capture_on_drag = false
 collision_layer = 1
