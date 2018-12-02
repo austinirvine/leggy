@@ -19,6 +19,10 @@ config/name="leggy"
 run/main_scene="res://Assets/game.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+HUD="*res://hud/hud.tscn"
+
 [rendering]
 
 quality/driver/driver_name="GLES2"
