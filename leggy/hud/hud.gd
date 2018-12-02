@@ -35,6 +35,11 @@ func start(time):
 
 func stop():
 	$Timer.stop()
+	
+	$TryAgain.text = "Again!"
+	$TryAgain.show()
+	$Exit.text = "We're done here"
+	$Exit.show()
 
 func message(text : String):
 	current_message_position = 0

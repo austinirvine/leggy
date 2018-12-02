@@ -51,6 +51,9 @@ func _saw_loc(point, dir):
 	_make_cut(saw, last_point.y)
 
 func _make_cut(saw, zLoc):
+	if get_parent().done:
+		return
+		
 	#print(zLoc)
 	if cut_threshold == false && zLoc < 200:
 		cut_threshold = true
@@ -61,11 +64,11 @@ func _make_cut(saw, zLoc):
 		cut_threshold = false
 		audio_player_out._set_playing(false)
 		audio_player_in._set_playing(true)
-		saw.translate( Vector3 ( 0.0, -0.15, 0.0 ))
+		saw.translate( Vector3 ( 0.0, -0.15 / 2, 0.0 ))
 		progress += 1
 
 	#leg change to ragdoll
-	if (progress == 15) :
+	if (progress == 15 * 2) :
 		var leg = get_node("Leg")
 		var calf_withrag = leg.get_node("calf-withrag")
 		var calf_norag = leg.get_node("calf-norag")
@@ -73,7 +76,10 @@ func _make_cut(saw, zLoc):
 		leg.remove_child( calf_norag )
 		calf_withrag.set_visible(true)
 		calf_withrag.pause_mode = Node.PAUSE_MODE_INHERIT
-		pass
+		
+		get_parent().done = true
+		get_node("../HUD").stop()
+		get_node("../HUD").message("YOU DID IT! Good job. Now get back in the field, soldier.")
 	#print(progress)
 
 func _saw_pitch(delta) :
