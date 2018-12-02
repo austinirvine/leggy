@@ -33,6 +33,9 @@ func start(time):
 	$Timer.start()
 	set_process(true)
 
+func stop():
+	$Timer.stop()
+
 func message(text : String):
 	current_message_position = 0
 	target_message = text
