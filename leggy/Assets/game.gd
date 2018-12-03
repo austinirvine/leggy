@@ -11,7 +11,7 @@ func _ready():
 
 	if done: return
 
-	$HUD.message("Faster! Put your back into it!") # 20 seconds remain
+	$HUD.message("Faster! Put your back into it! Long strokes!") # 20 seconds remain
 	yield(get_tree().create_timer(10.0), "timeout")
 
 	if done: return
