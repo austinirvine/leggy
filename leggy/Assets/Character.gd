@@ -58,7 +58,7 @@ func _saw_loc(point, dir):
 func _make_cut(saw, zLoc):
 	if get_parent().done:
 		return
-		
+
 	#print(zLoc)
 	if cut_threshold == false && zLoc < 200:
 		cut_threshold = true
@@ -84,7 +84,7 @@ func _make_cut(saw, zLoc):
 		leg.remove_child( calf_norag )
 		calf_withrag.set_visible(true)
 		calf_withrag.pause_mode = Node.PAUSE_MODE_INHERIT
-		
+
 		get_parent().done = true
 		get_node("../HUD").stop()
 		get_node("../HUD").message("YOU DID IT! Good job. Now get back in the field, soldier.")

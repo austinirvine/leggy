@@ -1,4 +1,6 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Assets/BackScene.dae" type="PackedScene" id=1]
 
 [sub_resource type="PlaneMesh" id=1]
 
@@ -16,7 +18,7 @@ extents = Vector3( 1, 0.0625992, 1 )
 [node name="Background" type="Spatial"]
 
 [node name="Ground" type="StaticBody" parent="."]
-transform = Transform( 6.86658, 0, 0, 0, 1, 0, 0, 0, 8.77252, 0, -2, 0 )
+transform = Transform( 6.73451, 7.03057e-09, -1.71226, -4.74146e-08, 1, 1.16074e-08, 1.34025, 5.006e-11, 8.6038, -1.94981, -1.10599, -6.63444 )
 input_ray_pickable = true
 input_capture_on_drag = false
 collision_layer = 1
@@ -43,4 +45,8 @@ shape = SubResource( 2 )
 disabled = false
 
 [node name="Brush" type="Spatial" parent="."]
+transform = Transform( 0.980767, 7.03057e-09, -0.195184, -6.90512e-09, 1, 1.32316e-09, 0.195184, 5.006e-11, 0.980767, -1.94981, 0.497337, -6.63444 )
+
+[node name="Scene Root" parent="." instance=ExtResource( 1 )]
+transform = Transform( 2.00558, 1.43769e-08, -0.399134, -1.41203e-08, 2.04491, 2.70574e-09, 0.399134, 1.02368e-10, 2.00558, -5.06088, -1.732, -7.25358 )
 
