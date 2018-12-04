@@ -43,7 +43,7 @@ func stop():
 	$Exit.text = "We're done here"
 	$Exit.show()
 
-func message(text : String):
+func message(text):
 	current_message_position = 0
 	target_message = text
 	$MessageLabel.text = ""

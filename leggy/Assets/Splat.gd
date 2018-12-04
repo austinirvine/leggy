@@ -13,7 +13,7 @@ func _ready():
 		pass
 
 	#var material = get_child(0).get_surface_material(0)
-	var material = get_child(0).mesh.surface_get_material(0)
+	var material = get_child(0).mesh.material
 	_set_rand_transform()
 	_lighten(material)
 	pass

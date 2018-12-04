@@ -2,6 +2,6 @@ extends Skeleton
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	physical_bones_start_simulation()
+	#physical_bones_start_simulation()
 	pass # Replace with function body.
 
