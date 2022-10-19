@@ -1,7 +1,7 @@
 extends Control
 
-const GAME_SCENE = preload("res://Assets/game.tscn")
-const MENU_SCENE = preload("res://menu/menu.tscn")
+var GAME_SCENE = load("res://Assets/game.tscn")
+var MENU_SCENE = load("res://menu/menu.tscn")
 
 signal game_over
 var target_message = ""
@@ -9,6 +9,7 @@ var current_message_position = 0
 var finish_time = 0.0
 
 func _ready():
+	Global.hud = self
 	$Timer.connect("timeout", self, "handle_timeout")
 	$TryAgain.connect("pressed", self, "handle_tryagain_pressed")
 	$Exit.connect("pressed", self, "handle_exit_pressed")
@@ -37,7 +38,7 @@ func start(time):
 func stop():
 	finish_time = $Timer.time_left
 	$Timer.stop()
-	
+
 	$TryAgain.text = "Again!"
 	$TryAgain.show()
 	$Exit.text = "We're done here"
