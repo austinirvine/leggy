@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Assets/imported/Saw.material" type="Material" id=1]
 [ext_resource path="res://Assets/saw.gd" type="Script" id=2]
 [ext_resource path="res://SawIn_1.wav" type="AudioStream" id=3]
 [ext_resource path="res://SawOut_1.wav" type="AudioStream" id=4]
+[ext_resource path="res://Assets/imported/Saw-Texture.png" type="Texture" id=5]
 
 [sub_resource type="ArrayMesh" id=1]
 resource_name = "Cube"
@@ -21,6 +22,9 @@ surfaces/0 = {
 "vertex_count": 858
 }
 
+[sub_resource type="SpatialMaterial" id=3]
+albedo_texture = ExtResource( 5 )
+
 [sub_resource type="BoxShape" id=2]
 
 [node name="Saw" type="StaticBody"]
@@ -29,6 +33,7 @@ script = ExtResource( 2 )
 [node name="blade" type="MeshInstance" parent="."]
 transform = Transform( -2.52183e-08, 0, -0.576928, 0, 0.576928, 0, 0.576928, 0, -2.52183e-08, 0, 0, 0 )
 mesh = SubResource( 1 )
+material/0 = SubResource( 3 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 0.0478884, 0, 0, 0, 0.526479, 0, 0, 0, 2.06428, 0, 0, 0 )
