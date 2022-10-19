@@ -2,12 +2,12 @@
 
 importer="scene"
 type="PackedScene"
-path="res://.import/saw.dae-760898416a7bf0e1f8062a556ed5f536.scn"
+path="res://.import/lg.fbx-67f3570a0743b1451e52cea13b3bc42c.scn"
 
 [deps]
 
-source_file="res://Assets/imported/saw.dae"
-dest_files=[ "res://.import/saw.dae-760898416a7bf0e1f8062a556ed5f536.scn" ]
+source_file="res://Assets/imported/lg.fbx"
+dest_files=[ "res://.import/lg.fbx-67f3570a0743b1451e52cea13b3bc42c.scn" ]
 
 [params]
 
@@ -16,12 +16,12 @@ nodes/root_name="Scene Root"
 nodes/root_scale=1.0
 nodes/custom_script=""
 nodes/storage=0
-nodes/use_legacy_names=true
+nodes/use_legacy_names=false
 materials/location=1
 materials/storage=1
 materials/keep_on_reimport=true
 meshes/octahedral_compression=true
-meshes/compress=true
+meshes/compress=4286
 meshes/ensure_tangents=true
 meshes/storage=0
 meshes/light_baking=0

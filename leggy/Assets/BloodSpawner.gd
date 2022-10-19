@@ -20,7 +20,7 @@ func _instance_particles() :
 		cur_instances += 1
 	else :
 		yield(get_tree().create_timer(randi() % 2), "timeout")
-		
+
 	yield(get_parent().get_node("Character"), "_on_sawing")
 	_instance_particles()
 

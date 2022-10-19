@@ -37,7 +37,7 @@ func start(time):
 func stop():
 	finish_time = $Timer.time_left
 	$Timer.stop()
-	
+
 	$TryAgain.text = "Again!"
 	$TryAgain.show()
 	$Exit.text = "We're done here"

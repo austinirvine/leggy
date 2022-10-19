@@ -1,7 +1,6 @@
 extends Node2D
 
 
-
 func _on_SwipeDetector_swipe_started( partial_gesture ):
 	var point = partial_gesture.last_point()
 
