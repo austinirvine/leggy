@@ -1,7 +1,6 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Assets/Character.gd" type="Script" id=1]
-[ext_resource path="res://Assets/SwipeZone.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Assets/Saw.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Assets/Leg.tscn" type="PackedScene" id=4]
 [ext_resource path="res://SawIn_1.wav" type="AudioStream" id=5]
@@ -13,11 +12,9 @@ script = ExtResource( 1 )
 [node name="Camera" type="Camera" parent="."]
 transform = Transform( 0.580883, -0.598309, 0.551907, 0.118979, 0.733156, 0.669572, -0.805245, -0.323278, 0.497064, 2.0265, 3.41793, 2.63131 )
 
-[node name="SwipeZone" parent="Camera" instance=ExtResource( 2 )]
-charOBJ = NodePath("../..")
-
 [node name="Saw" parent="." instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.369496, 1.62941, 0 )
+leg = NodePath("../Leg")
 
 [node name="Leg" parent="." instance=ExtResource( 4 )]
 transform = Transform( 0.079779, 0.0215479, 0.310552, 0.0532093, 0.314926, -0.0355205, -0.306718, 0.0602381, 0.0746143, 0.72, -1.9, 0 )

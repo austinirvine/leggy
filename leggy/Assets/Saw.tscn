@@ -1,6 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Assets/imported/Saw.material" type="Material" id=1]
+[ext_resource path="res://Assets/saw.gd" type="Script" id=2]
+[ext_resource path="res://SawIn_1.wav" type="AudioStream" id=3]
+[ext_resource path="res://SawOut_1.wav" type="AudioStream" id=4]
 
 [sub_resource type="ArrayMesh" id=1]
 resource_name = "Cube"
@@ -20,14 +23,8 @@ surfaces/0 = {
 
 [sub_resource type="BoxShape" id=2]
 
-[node name="Saw" type="RigidBody"]
-gravity_scale = 0.0
-axis_lock_linear_x = true
-axis_lock_linear_y = true
-axis_lock_linear_z = true
-axis_lock_angular_x = true
-axis_lock_angular_y = true
-axis_lock_angular_z = true
+[node name="Saw" type="StaticBody"]
+script = ExtResource( 2 )
 
 [node name="blade" type="MeshInstance" parent="."]
 transform = Transform( -2.52183e-08, 0, -0.576928, 0, 0.576928, 0, 0.576928, 0, -2.52183e-08, 0, 0, 0 )
@@ -36,3 +33,11 @@ mesh = SubResource( 1 )
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 0.0478884, 0, 0, 0, 0.526479, 0, 0, 0, 2.06428, 0, 0, 0 )
 shape = SubResource( 2 )
+
+[node name="ForwardSound" type="AudioStreamPlayer3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2 )
+stream = ExtResource( 3 )
+
+[node name="BackSound" type="AudioStreamPlayer3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3 )
+stream = ExtResource( 4 )

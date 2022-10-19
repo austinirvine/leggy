@@ -29,10 +29,10 @@ func _on_sawing(sawing):
 	cur_sawing = sawing
 	_blood_sound()
 	print("change of state")
-	pass # Replace with function body.
 
 func _blood_sound():
-	return # Not working for some reason
+	print("FIXME")
+	# Not working for some reason
 	var b_sound = get_node("AudioStreamPlayer3D")
 	print(cur_sawing)
 	#print("scumlade")
