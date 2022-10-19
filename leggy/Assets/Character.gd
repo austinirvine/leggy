@@ -9,10 +9,6 @@ var cut_threshold = false
 # Gyroscope
 #var gyr_threshold = 1
 
-# Audio
-onready var audio_player_in = get_node("AudioStreamPlayer3D_in")
-onready var audio_player_out = get_node("AudioStreamPlayer3D_out")
-
 # Blood Signal
 var blood_speed = 10
 signal _on_sawing(sawing)

@@ -1,10 +1,8 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Assets/Character.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Saw.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Assets/Leg.tscn" type="PackedScene" id=4]
-[ext_resource path="res://SawIn_1.wav" type="AudioStream" id=5]
-[ext_resource path="res://SawOut_1.wav" type="AudioStream" id=6]
 
 [node name="Character" type="Spatial"]
 script = ExtResource( 1 )
@@ -18,9 +16,3 @@ leg = NodePath("../Leg")
 
 [node name="Leg" parent="." instance=ExtResource( 4 )]
 transform = Transform( 0.079779, 0.0215479, 0.310552, 0.0532093, 0.314926, -0.0355205, -0.306718, 0.0602381, 0.0746143, 0.72, -1.9, 0 )
-
-[node name="AudioStreamPlayer3D_in" type="AudioStreamPlayer3D" parent="."]
-stream = ExtResource( 5 )
-
-[node name="AudioStreamPlayer3D_out" type="AudioStreamPlayer3D" parent="."]
-stream = ExtResource( 6 )

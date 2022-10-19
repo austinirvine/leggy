@@ -9,6 +9,7 @@ const BACK := 1
 var direction : int = FORWARD
 var last_drag_pos := Vector2()
 var saw_time := 0.0
+var squirt_delta := 0.0
 
 func _ready():
 	leg = get_node(leg)
@@ -37,6 +38,13 @@ func move_saw(amount: float):
 	if direction == FORWARD:
 		if amount < 0.0:
 			translation.y += amount * 0.01
+			squirt_delta += -amount
+
+		if squirt_delta > 1.0:
+			squirt_delta = 1.0
+			leg.get_node("Squirt").emitting = true
+			if !leg.get_node("SquirtSound").playing:
+				leg.get_node("SquirtSound").playing = true
 
 		if is_equal_approx(translation.z, SAW_FORWARD_THRESHOLD):
 			direction = BACK
